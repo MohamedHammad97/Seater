@@ -1,0 +1,18 @@
+{
+  "routes": {
+    "/": {},
+    "/about": {},
+    "/about-details": {},
+    "/auth": {},
+    "/auth/forget-password": {},
+    "/auth/login": {},
+    "/business": {},
+    "/contact": {},
+    "/home": {},
+    "/schoolBooking": {},
+    "/schools": {},
+    "/services-info": {},
+    "/special-request": {},
+    "/tracking": {}
+  }
+}

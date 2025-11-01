@@ -17,7 +17,7 @@
               "replace": "./src/app/environments/environment.ts",
               "with": "./src/app/environments/environment.prod.ts"
             }],
-            "outputPath": "dist/seater-app",
+            "outputPath": "docs/seater-app",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
