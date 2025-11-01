@@ -1,0 +1,237 @@
+<div
+    class="relative text-center bg-gradient-to-r from-blue-900 to-sky-500 text-white py-16 px-5 rounded-bl-[100px] overflow-hidden">
+    <div class="relative z-10 my-4">
+        <h1 class="mb-3 text-3xl md:text-4xl font-bold">Sign Up!</h1>
+        <p class="text-base md:text-lg">please fill your details below to complete your account</p>
+    </div>
+    <div class="pointer-events-none absolute top-[5%] left-1/2 -translate-x-1/2 w-4/5 h-4/5
+           bg-[radial-gradient(rgba(255,255,255,0.12)_2px,transparent_2px)]
+           bg-[length:20px_20px]">
+    </div>
+</div>
+
+<div class="form-container  mx-auto max-w-lg my-10 w-full lg:max-w-lg bg-white p-8 rounded-xl shadow-md ">
+
+    <form [formGroup]="registerForm" (ngSubmit)="register()" class="space-y-6">
+
+        @if (apiError) {
+        <div class="p-3 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400">
+            {{apiError}}
+        </div>
+        }
+        <!-- Name -->
+        <div class="relative">
+            @let nameControl = registerForm.get('name');
+            <div class="absolute top-4 left-0 flex items-center justify-center pl-3 pointer-events-none">
+                <i class="fa fa-user text-gray-400"></i>
+            </div>
+            <input type="text" id="name" name="name" formControlName="name" class="block pl-10 px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent 
+                   rounded-lg border border-gray-300 appearance-none 
+                   focus:outline-none focus:ring-0 focus:border-blue-600 peer" />
+            <label for="name" class="absolute text-sm text-gray-500 duration-300 transform -translate-y-3 scale-75 top-2 z-10 
+                   origin-[0] bg-white px-2 ml-8 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
+                   peer-focus:scale-75 peer-focus:-translate-y-3 peer-focus:text-blue-600">
+                Name
+            </label>
+            @if (nameControl?.errors && (nameControl?.touched)) {
+            <div class="text-red-500 text-sm mt-1">
+                @if (nameControl?.getError('required')) {<p>Name is required</p>}
+                @if (nameControl?.getError('minlength')) {<p>Name minLength is 3</p>}
+                @if (nameControl?.getError('maxlength')) {<p>Name maxLength is 8</p>}
+
+            </div>
+            }
+        </div>
+
+        <!-- Email -->
+        <div class="relative">
+            @let emailControl = registerForm.get('email');
+            <div class="absolute top-4 left-0 flex items-center pl-3 pointer-events-none">
+                <i class="fa fa-envelope text-gray-400"></i>
+            </div>
+            <input type="email" id="email" name="email" formControlName="email" class="block pl-10 px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent 
+                   rounded-lg border border-gray-300 appearance-none 
+                   focus:outline-none focus:ring-0 focus:border-blue-600 peer" />
+            <label for="email" class="absolute text-sm text-gray-500 duration-300 transform -translate-y-3 scale-75 top-2 z-10 
+                   origin-[0] bg-white px-2 ml-8 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
+                   peer-focus:scale-75 peer-focus:-translate-y-3 peer-focus:text-blue-600">
+                Email
+            </label>
+            @if (emailControl?.errors && (emailControl?.touched)) {
+            <div class="text-red-500 text-sm mt-1">
+                @if (emailControl?.getError('required')) {<p>Email is required</p>}
+                @if (emailControl?.getError('email')) {<p>Email is not valid</p>}
+
+            </div>}
+        </div>
+
+        <!-- Password -->
+        <div class="relative">
+            @let passwordControl = registerForm.get('password');
+            <div class="absolute top-4 left-0 flex items-center pl-3 pointer-events-none">
+                <i class="fa fa-lock text-gray-400"></i>
+            </div>
+            <input (input)="checkPasswordStrength()"  [type]="!passwordVisible ? 'password' :'text'" id="password" name="password" formControlName="password" class="block pl-10 px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent 
+                   rounded-lg border border-gray-300 appearance-none 
+                   focus:outline-none focus:ring-0 focus:border-blue-600 peer" />
+            <label for="password" class="absolute text-sm text-gray-500 duration-300 transform -translate-y-3 scale-75 top-2 z-10 
+                   origin-[0] bg-white px-2 ml-8 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
+                   peer-focus:scale-75 peer-focus:-translate-y-3 peer-focus:text-blue-600">
+                Password
+            </label>
+            <div class="absolute top-4 right-0 flex items-center pr-3 cursor-pointer" (click)="togglePassword()">
+                @if (!passwordVisible) {
+                <i class="fa-solid fa-eye-slash"></i>
+                }@else {
+                <i class="fa-solid fa-eye"></i>
+                }
+            </div>
+
+           
+            @if (passwordControl?.errors && (passwordControl?.touched)) {
+            <div class="text-red-500 text-sm mt-1">
+                @if (passwordControl?.getError('required')) {<p>Password is required</p>}
+                @if (passwordControl?.getError('maxlength')) {<p>Password maxLength is 20</p>}
+                @if (passwordControl?.errors?.['pattern']) { <div class="space-y-1 text-sm">
+
+                    <div class="w-full bg-gray-200 rounded-full h-2.5 mb-4 mt-4">
+                        <div class="h-2.5 rounded-full transition-all duration-300" [ngClass]="{
+                                        'bg-red-500 w-1/3': strength === 'Weak',
+                                        'bg-yellow-500 w-2/3': strength === 'Medium',
+                                        'bg-green-500 w-full': strength === 'Strong'
+                                      }"></div>
+                    </div>
+                    <p class="text-sm font-medium" [ngClass]="{
+                                       'text-red-500': strength === 'Weak',
+                                       'text-yellow-600': strength === 'Medium',
+                                       'text-green-600': strength === 'Strong'
+                                     }">
+                        {{ strength }} Password
+                    </p>
+
+                    <p [class.text-green-600]="hasUpperCase" [class.text-red-500]="!hasUpperCase">
+                        {{ hasUpperCase ? '✅' : '❌' }} At least one uppercase letter
+                    </p>
+                    <p [class.text-green-600]="hasLowerCase" [class.text-red-500]="!hasLowerCase">
+                        {{ hasLowerCase ? '✅' : '❌' }} At least one lowercase letter
+                    </p>
+                    <p [class.text-green-600]="hasNumber" [class.text-red-500]="!hasNumber">
+                        {{ hasNumber ? '✅' : '❌' }} At least one number
+                    </p>
+                    <p [class.text-green-600]="hasSpecialChar" [class.text-red-500]="!hasSpecialChar">
+                        {{ hasSpecialChar ? '✅' : '❌' }} At least one special character (&#64;$!%*?&)
+                    </p>
+                    <p [class.text-green-600]="hasMinLength" [class.text-red-500]="!hasMinLength">
+                        {{ hasMinLength ? '✅' : '❌' }} Minimum 8 characters
+                    </p>
+
+                   
+                </div>}
+            </div>}
+        </div>
+
+
+        <!-- Confirm Password -->
+        <div class="relative">
+            @let rePasswordControl = registerForm.get('rePassword');
+            <div class="absolute top-4 left-0 flex items-center pl-3 pointer-events-none">
+                <i class="fa fa-lock text-gray-400"></i>
+            </div>
+            <input type="password" id="rePassword" name="rePassword" formControlName="rePassword" class="block pl-10 px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent 
+                   rounded-lg border border-gray-300 appearance-none 
+                   focus:outline-none focus:ring-0 focus:border-blue-600 peer" />
+            <label for="rePassword" class="absolute text-sm text-gray-500 duration-300 transform -translate-y-3 scale-75 top-2 z-10 
+                   origin-[0] bg-white px-2 ml-8 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
+                   peer-focus:scale-75 peer-focus:-translate-y-3 peer-focus:text-blue-600">
+                Confirm Password
+            </label>
+
+            @if ( rePasswordControl?.touched
+            && (rePasswordControl?.errors || registerForm.getError('misMatch'))) {
+            <div class="text-red-500 text-sm mt-1">
+                @if (rePasswordControl?.getError('required')) {<p>rePassword is required</p>}
+                @if (registerForm.getError('misMatch')) {<p>Password and rePassword should match</p>}
+                <!-- @if (registerForm.errors?.['passwordMismatcgError'] && (getControl('rePassword')?.touched || isNotValidForm)) {<p>Password and rePassword should match</p>} -->
+            </div>}
+        </div>
+
+        <!-- Phone -->
+        <div class="relative">
+            @let phoneControl = registerForm.get('phone');
+
+            <div class="absolute top-4 left-0 flex items-center pl-3 pointer-events-none">
+                <i class="fa fa-phone text-gray-400"></i>
+            </div>
+            <input type="tel" id="phone" formControlName="phone" class="block pl-10 px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent 
+                   rounded-lg border border-gray-300 appearance-none 
+                   focus:outline-none focus:ring-0 focus:border-blue-600 peer" />
+            <label for="phone" class="absolute text-sm text-gray-500 duration-300 transform -translate-y-3 scale-75 top-2 z-10 
+                   origin-[0] bg-white px-2 ml-8 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
+                   peer-focus:scale-75 peer-focus:-translate-y-3 peer-focus:text-blue-600">
+                Phone
+            </label>
+
+            @if (phoneControl?.errors && (phoneControl?.touched )) {
+            <div class="text-red-500 text-sm mt-1">
+                @if (phoneControl?.getError('required')) {<p>Phone is required</p>}
+                @if (phoneControl?.getError('minlength')) {<p>Phone minLength is 3</p>}
+                @if (phoneControl?.getError('maxlength')) {<p>Phone maxLength is 8</p>}
+                @if (phoneControl?.getError('pattern')) {<p>Please enter a valid Egyptian
+                    number (e.g.
+                    01xxxxxxxxx)</p>}
+            </div>}
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none 
+             focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+            @if (isCallingAPI) {<i class="fa fa-spinner fa-spin"></i>} @else {
+            <span>Submit</span>
+            }
+        </button>
+
+        <!-- Login link -->
+        <div class="my-4 text-center">
+            <p>Already have an account?
+                <a routerLink="/auth/login" class="text-blue-600 font-bold hover:underline">Login</a>
+            </p>
+        </div>
+    </form>
+</div>
+
+
+
+<!-- <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="my-80 space-y-4 max-w-md mx-auto p-4 border rounded-lg">
+    <input type="text" formControlName="name" placeholder="Name" class="border p-2 w-full" />
+    <div *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched" class="text-red-500 text-sm">
+        Name is required (min 3 chars).
+    </div>
+
+    <input type="email" formControlName="email" placeholder="Email" class="border p-2 w-full" />
+    <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="text-red-500 text-sm">
+        Valid email is required.
+    </div>
+
+    <input type="password" formControlName="password" placeholder="Password" class="border p-2 w-full" />
+    <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched"
+        class="text-red-500 text-sm">
+        Min 8 chars, at least 1 letter & 1 number.
+    </div>
+
+    <input type="password" formControlName="rePassword" placeholder="Confirm Password" class="border p-2 w-full" />
+<div *ngIf="registerForm.errors?.['passwordMismatch'] && registerForm.get('rePassword')?.touched"
+    class="text-red-500 text-sm">
+    Passwords do not match.
+</div>
+
+    <input type="text" formControlName="phone" placeholder="Phone (e.g. 01012345678)" class="border p-2 w-full" />
+    <div *ngIf="registerForm.get('phone')?.invalid && registerForm.get('phone')?.touched" class="text-red-500 text-sm">
+        Valid Egyptian phone is required.
+    </div>
+
+    <button type="submit" [disabled]="loading" class="bg-blue-500 text-white px-4 py-2 rounded w-full">
+        {{ loading ? 'Registering...' : 'Register' }}
+    </button>
+
+    <p *ngIf="errorMessage" class="text-red-500 mt-2">{{ errorMessage }}</p>
+</form> -->

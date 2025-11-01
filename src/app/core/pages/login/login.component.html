@@ -1,0 +1,222 @@
+<!-- <div
+    class="relative text-center bg-gradient-to-r from-blue-900 to-sky-500 text-white py-16 px-5 rounded-bl-[100px] overflow-hidden">
+    <div class="relative z-10 my-4">
+        <h1 class="mb-3 text-3xl md:text-4xl font-bold">Sign Up!</h1>
+        <p class="text-base md:text-lg">please fill your details below to complete your account</p>
+    </div>
+    <div class="pointer-events-none absolute top-[5%] left-1/2 -translate-x-1/2 w-4/5 h-4/5
+           bg-[radial-gradient(rgba(255,255,255,0.12)_2px,transparent_2px)]
+           bg-[length:20px_20px]">
+    </div>
+</div>
+
+<div class="form-container  mx-auto max-w-lg my-5 w-full lg:max-w-lg bg-white p-8 rounded-xl shadow-md ">
+
+    <form [formGroup]="loginForm" (ngSubmit)="login()" class="space-y-6">
+
+        @if (apiError) {
+        <div class="p-3 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400">
+            {{apiError}}
+        </div>
+        }
+       
+        Email
+        <div class="relative">
+            <div class="absolute top-4 left-0 flex items-center pl-3 pointer-events-none">
+                <i class="fa fa-envelope text-gray-400"></i>
+            </div>
+            <input type="email" id="email" name="email" formControlName="email" class="block pl-10 px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent 
+                   rounded-lg border border-gray-300 appearance-none 
+                   focus:outline-none focus:ring-0 focus:border-blue-600 peer" />
+            <label for="email" class="absolute text-sm text-gray-500 duration-300 transform -translate-y-3 scale-75 top-2 z-10 
+                   origin-[0] bg-white px-2 ml-8 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
+                   peer-focus:scale-75 peer-focus:-translate-y-3 peer-focus:text-blue-600">
+                Email
+            </label>
+            @if (loginForm.get('email')?.errors && (loginForm.get('email')?.touched)) {
+            <div class="text-red-500 text-sm mt-1">
+                @if (loginForm.get('email')?.getError('required')) {<p>Email is required</p>}
+                @if (loginForm.get('email')?.getError('email')) {<p>Email is not valid</p>}
+
+            </div>}
+        </div>
+
+        Password
+        <div class="relative">
+            <div class="absolute top-4 left-0 flex items-center pl-3 pointer-events-none">
+                <i class="fa fa-lock text-gray-400"></i>
+            </div>
+            <input type="password" id="password" name="password" formControlName="password" class="block pl-10 px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent 
+                   rounded-lg border border-gray-300 appearance-none 
+                   focus:outline-none focus:ring-0 focus:border-blue-600 peer" />
+            <label for="password" class="absolute text-sm text-gray-500 duration-300 transform -translate-y-3 scale-75 top-2 z-10 
+                   origin-[0] bg-white px-2 ml-8 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
+                   peer-focus:scale-75 peer-focus:-translate-y-3 peer-focus:text-blue-600">
+                Password
+            </label>
+            <div class="absolute top-4 right-0 flex items-center pr-3 cursor-pointer" (click)="togglePassword()">
+                <i class="fa" [ngClass]="passwordVisible ? 'fa-eye-slash' : 'fa-eye'"></i>
+            </div>
+
+            @if (loginForm.get('password')?.errors && (loginForm.get('password')?.touched)) {
+            <div class="text-red-500 text-sm mt-1">
+                @if (loginForm.get('password')?.getError('required')) {<p>Password is required</p>}
+                @if (loginForm.get('password')?.getError('minlength')) {<p>Password minLength is 3</p>}
+                @if (loginForm.get('password')?.getError('maxlength')) {<p>Password maxLength is 8</p>}
+
+            </div>}
+        </div>
+
+        Submit
+        <button type="submit" class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none 
+             focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+            @if (isCallingAPI) {<i class="fa fa-spinner fa-spin"></i>} @else {
+            <span>login</span>
+            }
+        </button>
+
+        Login link
+        <div class="my-4 text-center">
+            <p>Don't have an account?
+                <a routerLink="/auth" class="text-blue-600 font-bold hover:underline">Sign Up</a>
+            </p>
+        </div>
+    </form>
+</div> -->
+
+
+<div
+    class="relative text-center bg-gradient-to-r from-blue-900 to-sky-500 text-white py-16 px-5 rounded-bl-[100px] overflow-hidden">
+    <div class="relative z-10 my-4">
+        <h1 class="mb-3 text-3xl md:text-4xl font-bold">Sign In!</h1>
+        <p class="text-base md:text-lg">Please enter your details below to login</p>
+    </div>
+    <div class="pointer-events-none absolute top-[5%] left-1/2 -translate-x-1/2 w-4/5 h-4/5
+         bg-[radial-gradient(rgba(255,255,255,0.12)_2px,transparent_2px)]
+         bg-[length:20px_20px]">
+    </div>
+</div>
+
+<div class="form-container mx-auto max-w-lg my-10 w-full bg-white p-8 rounded-xl shadow-md">
+    <form [formGroup]="loginForm" (ngSubmit)="login()" class="space-y-6">
+
+        @if (apiError) {
+        <div class="p-3 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400">
+            {{apiError}}
+        </div>
+        }
+
+        <!-- Email -->
+        <!-- <div class="relative">
+            <div class="absolute top-4 left-0 flex items-center pl-3 pointer-events-none">
+                <i class="fa fa-envelope text-gray-400"></i>
+            </div>
+            <input type="email" id="email" formControlName="email" class="block pl-10 px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent 
+               rounded-lg border border-gray-300 focus:outline-none focus:ring-0 focus:border-blue-600 peer" />
+            <label for="email" class="absolute text-sm text-gray-500 duration-300 transform -translate-y-3 scale-75 top-2 z-10 
+               origin-[0] bg-white px-2 ml-8 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
+               peer-focus:scale-75 peer-focus:-translate-y-3 peer-focus:text-blue-600">
+                Email
+            </label>
+            <div *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid"
+                class="text-red-500 text-sm mt-1">
+                <p *ngIf="loginForm.get('email')?.hasError('required')">Email is required</p>
+                <p *ngIf="loginForm.get('email')?.hasError('email')">Email is not valid</p>
+            </div>
+        </div> -->
+
+        <!-- Email -->
+        <div class="relative">
+            @let emailControl = loginForm.get('email');
+            <div class="absolute top-4 left-0 flex items-center pl-3 pointer-events-none">
+                <i class="fa fa-envelope text-gray-400"></i>
+            </div>
+            <input type="email" id="email" name="email" formControlName="email" class="block pl-10 px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent 
+                           rounded-lg border border-gray-300 appearance-none 
+                           focus:outline-none focus:ring-0 focus:border-blue-600 peer" />
+            <label for="email" class="absolute text-sm text-gray-500 duration-300 transform -translate-y-3 scale-75 top-2 z-10 
+                           origin-[0] bg-white px-2 ml-8 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
+                           peer-focus:scale-75 peer-focus:-translate-y-3 peer-focus:text-blue-600">
+                Email
+            </label>
+            @if (emailControl?.errors && (emailControl?.touched)) {
+            <div class="text-red-500 text-sm mt-1">
+                @if (emailControl?.getError('required')) {<p>Email is required</p>}
+                @if (emailControl?.getError('email')) {<p>Email is not valid</p>}
+        
+            </div>}
+        </div>
+
+        <!-- Password -->
+        <!-- <div class="relative">
+            <div class="absolute top-4 left-0 flex items-center pl-3 pointer-events-none">
+                <i class="fa fa-lock text-gray-400"></i>
+            </div>
+            <input type="password" id="password" formControlName="password" class="block pl-10 px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent 
+               rounded-lg border border-gray-300 focus:outline-none focus:ring-0 focus:border-blue-600 peer" />
+            <label for="password" class="absolute text-sm text-gray-500 duration-300 transform -translate-y-3 scale-75 top-2 z-10 
+               origin-[0] bg-white px-2 ml-8 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
+               peer-focus:scale-75 peer-focus:-translate-y-3 peer-focus:text-blue-600">
+                Password
+            </label>
+            <div class="absolute top-4 right-0 flex items-center pr-3 cursor-pointer" (click)="togglePassword()">
+                <i class="fa" [ngClass]="passwordVisible ? 'fa-eye-slash' : 'fa-eye'"></i>
+            </div>
+            <div *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid"
+                class="text-red-500 text-sm mt-1">
+                <p *ngIf="loginForm.get('password')?.hasError('required')">Password is required</p>
+                <p *ngIf="loginForm.get('password')?.hasError('minlength')">Password must be at least 3 characters</p>
+                <p *ngIf="loginForm.get('password')?.hasError('maxlength')">Password must be max 8 characters</p>
+                <p *ngIf="loginForm.get('password')?.hasError('pattern')">Password must contain uppercase, lowercase,
+                    number and special character</p>
+            </div>
+        </div> -->
+
+        <!-- Password -->
+        <div class="relative">
+            @let passwordControl = loginForm.get('password');
+            <div class="absolute top-4 left-0 flex items-center pl-3 pointer-events-none">
+                <i class="fa fa-lock text-gray-400"></i>
+            </div>
+            <input  [type]="!passwordVisible ? 'password' :'text'" id="password" name="password" formControlName="password"
+                class="block pl-10 px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent 
+                           rounded-lg border border-gray-300 appearance-none 
+                           focus:outline-none focus:ring-0 focus:border-blue-600 peer" />
+            <label for="password" class="absolute text-sm text-gray-500 duration-300 transform -translate-y-3 scale-75 top-2 z-10 
+                           origin-[0] bg-white px-2 ml-8 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 
+                           peer-focus:scale-75 peer-focus:-translate-y-3 peer-focus:text-blue-600">
+                Password
+            </label>
+            <div class="absolute top-4 right-0 flex items-center pr-3 cursor-pointer" (click)="togglePassword()">
+                 @if (!passwordVisible) {
+                    <i class="fa-solid fa-eye-slash"></i>
+                 }@else {
+                    <i class="fa-solid fa-eye"></i>
+                 }
+            </div>
+        
+        
+            @if (passwordControl?.errors && (passwordControl?.touched)) {
+            <div class="text-red-500 text-sm mt-1">
+                @if (passwordControl?.getError('required')) {<p>Password is required</p>}
+                @if (passwordControl?.errors?.['pattern']) { <div class="space-y-1 text-sm">incorrect Password 
+                </div>}
+            </div>}
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none 
+             focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+            @if (isCallingAPI) {<i class="fa fa-spinner fa-spin"></i>} @else {
+            <span>Login</span>
+            }
+        </button>
+
+        <!-- Register link -->
+        <div class="my-4 text-center">
+            <p>Don't have an account?
+                <a routerLink="/auth" class="text-blue-600 font-bold hover:underline">Sign Up</a>
+            </p>
+        </div>
+    </form>
+</div>
