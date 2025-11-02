@@ -67,7 +67,7 @@
         </a>
         <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
             <div class="md:flex items-center gap-x-3 md:gap-x-6 hidden ">
-                <ul class="flex md:gap-x-3 pe-16">
+                <ul class="flex md:gap-x-3 pe-5">
                     <li>
                         <a href="https://www.facebook.com/SeaterApp/" target="_blank" [class.text-black]="isScrolled"
                             [class.text-white]="!isScrolled"><i
@@ -85,25 +85,25 @@
                     </li>
                 </ul>
 
-                <!-- <ul class="flex gap-x-2 md:gap-x-3">
+                <ul class="flex gap-x-2 md:gap-x-3">
                     @if (isLogedIn | async) {
-                        <li>
-                            <a routerLink="/auth" routerLinkActive="!text-blue-500" [class.text-black]="isScrolled"
+                        <li class="border  rounded-3xl px-7 py-2" [class.border-gray-100]="!isScrolled" [class.border-black]="isScrolled">
+                            <a routerLink="/auth"  [class.text-black]="isScrolled"
                                 [class.text-white]="!isScrolled" class="text-gray-900" (click)="signOut()">sign Out</a>
                         </li>
                     } @else {
                         <li class="border border-gray-100 rounded-3xl px-5 py-2">
-                            <a routerLink="/auth/" routerLinkActive="!text-blue-500" [class.text-black]="isScrolled"
+                            <a routerLink="/auth"  [class.text-black]="isScrolled"
                                 [class.text-white]="!isScrolled" class="text-gray-900 ">Register</a>
                         </li>
                         <li class="border border-gray-100 rounded-3xl px-7 py-2">
-                            <a routerLink="/auth/login" routerLinkActive="!text-blue-500" [class.text-black]="isScrolled"
+                            <a routerLink="/auth/login" [class.text-black]="isScrolled"
                                 [class.text-white]="!isScrolled" class="text-gray-900">login</a>
                         </li>
                     }
                     
                     
-                </ul> -->
+                </ul>
             </div>
 
 

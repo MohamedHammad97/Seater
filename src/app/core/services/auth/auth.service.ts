@@ -27,13 +27,13 @@ export class AuthService {
    }
 
   registerUser(userInfo: AuthUser): Observable<any> {
-    // return this._httpClient.post(`http://localhost:3000/api/v1//user`, userInfo);
-    return this._httpClient.post(`https://ecommerce.routemisr.com/api/v1/auth/signup`, userInfo);
+    return this._httpClient.post(`http://localhost:3000/api/v1/user`, userInfo);
+    // return this._httpClient.post(`https://ecommerce.routemisr.com/api/v1/auth/signup`, userInfo);
   }
 
   loginUser(userInfo: LoginUser): Observable<any> {
-    // return this._httpClient.post(`http://localhost:3000/api/v1//auth/signin`, userInfo);
-    return this._httpClient.post(`https://ecommerce.routemisr.com/api/v1/auth/signin`, userInfo);
+    return this._httpClient.post(`http://localhost:3000/api/v1/auth/signin`, userInfo);
+    // return this._httpClient.post(`https://ecommerce.routemisr.com/api/v1/auth/signin`, userInfo);
   }
 
   saveUser() {

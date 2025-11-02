@@ -48,6 +48,7 @@ export class RegisterComponent implements OnInit,OnDestroy  {
       this.sub = this._authService.registerUser(this.registerForm.value).subscribe({
         next: (res) => {
           this.isCallingAPI = false;
+          // this._authService.saveUser()
           // this._router.navigate(['/home']);
           this._router.navigate(['/auth/login']);
         },

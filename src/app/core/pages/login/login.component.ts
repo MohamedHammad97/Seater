@@ -41,6 +41,9 @@ export class LoginComponent {
         {
           next: (res) => {
             this.isCallingAPI = false
+            localStorage.setItem("userToken", res.token); // <-- ADD THIS LINE
+            this._authService.saveUser(); // <-- ADD THIS LINE
+            // this._authService.saveUser()
             this._router.navigate(['/home'])
           },
           error: (err) => {
