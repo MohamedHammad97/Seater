@@ -3,7 +3,7 @@ export default `<!doctype html>
 <head>
   <meta charset="utf-8">
   <title>SeaterApp</title>
-  <base href="/">
+  <base href="https://MohamedHammad97.github.io/Seater/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="stylesheet" href="styles-32U7AZGH.css"></head>
