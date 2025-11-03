@@ -1,9 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { afterNextRender, inject, Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { AuthUser, LoginUser } from '../../interfaces/auth-user';
+import { AuthUser, LoginUser, SchoolFormData } from '../../interfaces/auth-user';
 import { jwtDecode } from "jwt-decode";
-// import { isPlatformBrowser } from '@angular/common';
 import { API_BASE_URL } from '../../../token/api-token';
 import { Router } from '@angular/router';
 
@@ -56,7 +55,7 @@ export class AuthService {
     this._router.navigate(['/auth/login'])
   }
 
-  registerDetailsForm(data: any): Observable<any> {
+  registerDetailsForm(data: SchoolFormData): Observable<any> {
     return this._httpClient.post(`http://localhost:3000/api/v1/formDetails`, data)
     // return this._http.post(`https://ecommerce.routemisr.com/api/v1/auth/signup`, data)
   }

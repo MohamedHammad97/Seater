@@ -9,15 +9,15 @@ import { AuthService } from '../../../core/services/auth/auth.service';
   styleUrl: './special-request.component.css'
 })
 export class SpecialRequestComponent {
-  // constructor(private _authService: AuthService, private _router: Router) { }
+  
   private _authService = inject(AuthService);
   private _router = inject(Router);
 
   goToSignin() {
     if (this._authService.isLoggedinUser()) {
-      this._router.navigate(['/about']);
+      this._router.navigate(['/special-request']); //هضيف هنا الspecialRequestForm
     } else {
-      this._router.navigate(['/home']);
+      this._router.navigate(['/auth/login']);
     }
   }
 }

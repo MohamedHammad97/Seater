@@ -31,7 +31,6 @@ export class RegisterComponent implements OnInit,OnDestroy  {
       email: new FormControl(null, [Validators.required, Validators.email]),
       phone: new FormControl(null, [Validators.required, Validators.pattern(/^01[0125][0-9]{8}$/), Validators.minLength(10), Validators.maxLength(12)]),
       password: new FormControl(null, [Validators.required, Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/), Validators.maxLength(20)]),
-      // password: new FormControl(null, [Validators.required,Validators.pattern(/^[A-Z]\w{5,}$/),  Validators.maxLength(20)]),
       rePassword: new FormControl(null, [Validators.required, Validators.maxLength(20)]),
     }, { validators: [this.validateRePassword] });
 
@@ -122,17 +121,7 @@ export class RegisterComponent implements OnInit,OnDestroy  {
     }
   }
 
-
-
   ngOnDestroy(): void {
     if (this.sub) this.sub.unsubscribe();
   }
 }
-
-
-
-
-
-
-
-

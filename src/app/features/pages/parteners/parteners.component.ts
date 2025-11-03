@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Component, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 
 @Component({
@@ -9,20 +9,25 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
   styleUrl: './parteners.component.css'
 })
 export class PartenersComponent {
+  customOptions: any;
+  constructor(@Inject(PLATFORM_ID) private platformId: any) { }
 
-  customOptions = {
-    loop: true,
-    margin: 80,
-    autoplay: true,
-    autoplayTimeout: 2000,
-    autoplayHoverPause: true,
-    dots: false,
-    nav: false,
-    
-    responsive: {
-      0: { items: 1 },
-      640: { items: 2 },
-      1024: { items: 3 }
+  ngOnInit() {
+    if (isPlatformBrowser(this.platformId)) {
+      this.customOptions = {
+        loop: true,
+        margin: 80,
+        autoplay: true,
+        autoplayTimeout: 2000,
+        autoplayHoverPause: true,
+        dots: false,
+        nav: false,
+        responsive: {
+          0: { items: 1 },
+          640: { items: 2 },
+          1024: { items: 3 }
+        }
+      };
     }
   }
 }

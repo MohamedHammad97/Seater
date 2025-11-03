@@ -1,6 +1,6 @@
 
 export default {
-  basePath: 'https://MohamedHammad97.github.io/Seater',
+  basePath: '/',
   supportedLocales: {
   "en-US": ""
 },
