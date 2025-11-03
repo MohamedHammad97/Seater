@@ -2,7 +2,7 @@
 export default {
   bootstrap: () => import('./main.server.mjs').then(m => m.default),
   inlineCriticalCss: true,
-  baseHref: '/',
+  baseHref: '/Seater/',
   locale: undefined,
   routes: [
   {
@@ -12,7 +12,7 @@ export default {
       "chunk-ES5FMV55.js",
       "chunk-K4FGD7ME.js"
     ],
-    "route": "/"
+    "route": "/Seater"
   },
   {
     "renderMode": 2,
@@ -20,7 +20,7 @@ export default {
       "chunk-77CIPGLI.js",
       "chunk-7GMIKD4Z.js"
     ],
-    "route": "/auth"
+    "route": "/Seater/auth"
   },
   {
     "renderMode": 2,
@@ -28,14 +28,14 @@ export default {
       "chunk-THHEOJLJ.js",
       "chunk-7GMIKD4Z.js"
     ],
-    "route": "/auth/login"
+    "route": "/Seater/auth/login"
   },
   {
     "renderMode": 2,
     "preload": [
       "chunk-AVY5NHZN.js"
     ],
-    "route": "/auth/forget-password"
+    "route": "/Seater/auth/forget-password"
   },
   {
     "renderMode": 2,
@@ -44,7 +44,7 @@ export default {
       "chunk-ES5FMV55.js",
       "chunk-K4FGD7ME.js"
     ],
-    "route": "/home"
+    "route": "/Seater/home"
   },
   {
     "renderMode": 2,
@@ -52,14 +52,14 @@ export default {
       "chunk-UA32BQNI.js",
       "chunk-ES5FMV55.js"
     ],
-    "route": "/about"
+    "route": "/Seater/about"
   },
   {
     "renderMode": 2,
     "preload": [
       "chunk-V5ZNGNUR.js"
     ],
-    "route": "/about-details"
+    "route": "/Seater/about-details"
   },
   {
     "renderMode": 2,
@@ -67,21 +67,21 @@ export default {
       "chunk-GMQTMR5Z.js",
       "chunk-K4FGD7ME.js"
     ],
-    "route": "/contact"
+    "route": "/Seater/contact"
   },
   {
     "renderMode": 2,
     "preload": [
       "chunk-IQEU3TZ2.js"
     ],
-    "route": "/services-info"
+    "route": "/Seater/services-info"
   },
   {
     "renderMode": 2,
     "preload": [
       "chunk-U36OWWMZ.js"
     ],
-    "route": "/schools"
+    "route": "/Seater/schools"
   },
   {
     "renderMode": 2,
@@ -89,55 +89,55 @@ export default {
       "chunk-2WT2J5DJ.js",
       "chunk-7GMIKD4Z.js"
     ],
-    "route": "/schoolBooking"
+    "route": "/Seater/schoolBooking"
   },
   {
     "renderMode": 2,
     "preload": [
       "chunk-Y2AQWYSY.js"
     ],
-    "route": "/business"
+    "route": "/Seater/business"
   },
   {
     "renderMode": 2,
     "preload": [
       "chunk-DV6JS7S5.js"
     ],
-    "route": "/special-request"
+    "route": "/Seater/special-request"
   },
   {
     "renderMode": 2,
     "preload": [
       "chunk-YKD2SFXA.js"
     ],
-    "route": "/tracking"
+    "route": "/Seater/tracking"
   },
   {
     "renderMode": 2,
     "preload": [
       "chunk-SK2W5OT2.js"
     ],
-    "route": "/**"
+    "route": "/Seater/**"
   }
 ],
   entryPointToBrowserMapping: undefined,
   assets: {
-    'index.csr.html': {size: 2778, hash: '3a76ab1e9f11ba4d196794222f4688f700664c03510e992e9aca8871abfd1ca0', text: () => import('./assets-chunks/index_csr_html.mjs').then(m => m.default)},
-    'index.server.html': {size: 1261, hash: '3d53de63c5925b336651beaacd2b4f894eda5f54a5aa4c3f6481a1e60dd03e8f', text: () => import('./assets-chunks/index_server_html.mjs').then(m => m.default)},
-    'index.html': {size: 57575, hash: '0852cc696cb4a15cc09223c16adc20d68ba54f5a17c0d6c9b5a1802a327b5515', text: () => import('./assets-chunks/index_html.mjs').then(m => m.default)},
-    'auth/index.html': {size: 29090, hash: '635da8257023acd3ca920b750f1349862428408ca6ba25aa1419ee1c4b744928', text: () => import('./assets-chunks/auth_index_html.mjs').then(m => m.default)},
-    'auth/login/index.html': {size: 26326, hash: '5b626f3f9600e28126486cc180418049f0be9838199151330c9462e9476fc0ab', text: () => import('./assets-chunks/auth_login_index_html.mjs').then(m => m.default)},
-    'auth/forget-password/index.html': {size: 25326, hash: 'c2d4e95791eb06332fb5f9a71884b8faac526d89a860f9a8834215613a445cf0', text: () => import('./assets-chunks/auth_forget-password_index_html.mjs').then(m => m.default)},
-    'home/index.html': {size: 57699, hash: '63a1108956f2fcbf08b6a7b09bceb49983d17bab908daa9ce14efbb2ccbbdeab', text: () => import('./assets-chunks/home_index_html.mjs').then(m => m.default)},
-    'about/index.html': {size: 28508, hash: '2ba1ddb1da80b5aef4829c48934668349b4312dc412a2e403c2b9c11da6d4c38', text: () => import('./assets-chunks/about_index_html.mjs').then(m => m.default)},
-    'about-details/index.html': {size: 28857, hash: '4d51c2879a35077aa4a39124ead55797b8aeb52d254a560b1105059654ae73f0', text: () => import('./assets-chunks/about-details_index_html.mjs').then(m => m.default)},
-    'contact/index.html': {size: 32343, hash: '07610a698161e2d9e7d1e10ddaff0b486ff290e1dc026d5d19a921f0c383c02b', text: () => import('./assets-chunks/contact_index_html.mjs').then(m => m.default)},
-    'services-info/index.html': {size: 31653, hash: '652565f0c0cec4271efe7db69239d8700abefc00ed82a8155041ed54a7ebe24c', text: () => import('./assets-chunks/services-info_index_html.mjs').then(m => m.default)},
-    'schools/index.html': {size: 28161, hash: '1a790bdcd303aea436c7535a38302a1e5ed0626037dfefba6265cd01940833c0', text: () => import('./assets-chunks/schools_index_html.mjs').then(m => m.default)},
-    'schoolBooking/index.html': {size: 25150, hash: '681dcaf10b7739dfd0bff633c5a4193eb5c1b297d3498f0ddf4068435b3ff0b4', text: () => import('./assets-chunks/schoolBooking_index_html.mjs').then(m => m.default)},
-    'business/index.html': {size: 25098, hash: 'e6dc90de7ba8fd362c7b90e52f2c37b0f4c32ed5fd3fbf1cf21ff92fdbf6bc96', text: () => import('./assets-chunks/business_index_html.mjs').then(m => m.default)},
-    'special-request/index.html': {size: 25098, hash: '68f373646fad19314a0351f8aca9a806992437a132fbd22a6af051f7eb113ff0', text: () => import('./assets-chunks/special-request_index_html.mjs').then(m => m.default)},
-    'tracking/index.html': {size: 25098, hash: 'ca5954a9503e96b829ae89e521ec0a1b875717e5da0375d5f7fe5e1b5605bbb2', text: () => import('./assets-chunks/tracking_index_html.mjs').then(m => m.default)},
+    'index.csr.html': {size: 2785, hash: '54f4b9fd88e8f83e4e2d12e5f24bed9fa7157be030dbfd96fff5dd4b8a52ce72', text: () => import('./assets-chunks/index_csr_html.mjs').then(m => m.default)},
+    'index.server.html': {size: 1268, hash: '65be3459f2c9e674ee51cb387dd2cd25a43e401dd518e2ad8994253de50fbc9a', text: () => import('./assets-chunks/index_server_html.mjs').then(m => m.default)},
+    'index.html': {size: 57666, hash: '7671f97ad99fe8c13053b1a730285cbd5ca1f4b423fe999cd13bef9b7a3fbddb', text: () => import('./assets-chunks/index_html.mjs').then(m => m.default)},
+    'auth/index.html': {size: 29132, hash: 'a4a1161dcb98304fb56019f6060472defe2a28e0628b5cd6050b8a9c886d41c6', text: () => import('./assets-chunks/auth_index_html.mjs').then(m => m.default)},
+    'auth/login/index.html': {size: 26368, hash: 'aaef92eb45f5100c30ad4ca90763d7048308c14fbef88d90ff990a1447d88523', text: () => import('./assets-chunks/auth_login_index_html.mjs').then(m => m.default)},
+    'auth/forget-password/index.html': {size: 25417, hash: '95309c4aa939f4253b5321cbb081fd63559842a4c4cc0102680ecb696747c4c6', text: () => import('./assets-chunks/auth_forget-password_index_html.mjs').then(m => m.default)},
+    'home/index.html': {size: 57790, hash: '47bf848a90df0ed20a03ccea0002a9a2760b55635f34b8951f2694a090da42fe', text: () => import('./assets-chunks/home_index_html.mjs').then(m => m.default)},
+    'about/index.html': {size: 28599, hash: 'c2cb017146fd760fdd62eb0422c285227b08ead6d5371bffcd68664e4c5921d9', text: () => import('./assets-chunks/about_index_html.mjs').then(m => m.default)},
+    'about-details/index.html': {size: 28948, hash: '83a8762815dc925e5c337a9642c6f2552813b2eede344e6870dc5e1555d131e8', text: () => import('./assets-chunks/about-details_index_html.mjs').then(m => m.default)},
+    'contact/index.html': {size: 32434, hash: 'c7205033071d450f6812cab76563583007955d5cb1cd5a0252128b382c3a8a97', text: () => import('./assets-chunks/contact_index_html.mjs').then(m => m.default)},
+    'services-info/index.html': {size: 31744, hash: '353a4219b916296905e52e15e74d57aaedfb551a491cd3432f6a96ce302d91d3', text: () => import('./assets-chunks/services-info_index_html.mjs').then(m => m.default)},
+    'schools/index.html': {size: 28252, hash: 'c61b009f30d93034fb05410dd99dd292469600533a5b596e36ff63a769480447', text: () => import('./assets-chunks/schools_index_html.mjs').then(m => m.default)},
+    'schoolBooking/index.html': {size: 25241, hash: 'c43d86e582fc31978038c3601f86a1e36949d493b7cfbf4582e845ae6268e6cf', text: () => import('./assets-chunks/schoolBooking_index_html.mjs').then(m => m.default)},
+    'business/index.html': {size: 25189, hash: 'e4b4fe9c82e13397e240a1a978be00f6f93304c4bdb102df1f08a6fc5ea283de', text: () => import('./assets-chunks/business_index_html.mjs').then(m => m.default)},
+    'special-request/index.html': {size: 25189, hash: '9ae055f7883935d650471aa0e5eb8b6d7fadd291204e182d19f920fcadf4e142', text: () => import('./assets-chunks/special-request_index_html.mjs').then(m => m.default)},
+    'tracking/index.html': {size: 25189, hash: 'e100d759ee5b06500965f42f4d130ca6e306bbed13f103f91c276daf3e8cf1a2', text: () => import('./assets-chunks/tracking_index_html.mjs').then(m => m.default)},
     'styles-6GIJ36P4.css': {size: 143942, hash: '2ATUV3jgBEo', text: () => import('./assets-chunks/styles-6GIJ36P4_css.mjs').then(m => m.default)}
   },
 };

@@ -1,18 +1,18 @@
 {
   "routes": {
-    "/": {},
-    "/about": {},
-    "/about-details": {},
-    "/auth": {},
-    "/auth/forget-password": {},
-    "/auth/login": {},
-    "/business": {},
-    "/contact": {},
-    "/home": {},
-    "/schoolBooking": {},
-    "/schools": {},
-    "/services-info": {},
-    "/special-request": {},
-    "/tracking": {}
+    "/Seater": {},
+    "/Seater/about": {},
+    "/Seater/about-details": {},
+    "/Seater/auth": {},
+    "/Seater/auth/forget-password": {},
+    "/Seater/auth/login": {},
+    "/Seater/business": {},
+    "/Seater/contact": {},
+    "/Seater/home": {},
+    "/Seater/schoolBooking": {},
+    "/Seater/schools": {},
+    "/Seater/services-info": {},
+    "/Seater/special-request": {},
+    "/Seater/tracking": {}
   }
 }
