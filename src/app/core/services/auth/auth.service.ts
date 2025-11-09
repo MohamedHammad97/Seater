@@ -20,9 +20,7 @@ export class AuthService {
   constructor() {
     afterNextRender(() => {
       this.isLoggedinUser()
-
     })
-   
    }
 
   registerUser(userInfo: AuthUser): Observable<any> {

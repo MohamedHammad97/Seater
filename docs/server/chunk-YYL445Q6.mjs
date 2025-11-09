@@ -1,2 +1,0 @@
-import './polyfills.server.mjs';
-import{Sa as t,lb as o,mb as a,nb as i}from"./chunk-IEE2TMQT.mjs";import"./chunk-S6KH3LOX.mjs";var s=class n{static \u0275fac=function(e){return new(e||n)};static \u0275cmp=t({type:n,selectors:[["app-not-found"]],decls:2,vars:0,consts:[[1,"h-screen","flex","justify-center","items-center","bg-gray-50"],["src","404.png","alt","Coming Soon",1,"max-w-full","max-h-full","object-contain"]],template:function(e,m){e&1&&(o(0,"div",0),i(1,"img",1),a())},encapsulation:2})};export{s as NotFoundComponent};

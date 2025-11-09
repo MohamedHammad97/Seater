@@ -1,10 +1,11 @@
-import { Component, OnInit, OnDestroy, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import {FormBuilder,FormGroup,ReactiveFormsModule,Validators} from '@angular/forms';
+import { Component, OnInit, OnDestroy, inject, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../../../core/services/auth/auth.service';
 import * as L from 'leaflet';
+import { SearchResult } from '../../interfaces/search-result';
 
 @Component({
   selector: 'app-school-booking',
@@ -22,12 +23,15 @@ export class SchoolBookingComponent implements OnInit, OnDestroy {
 
   showMapModal = false;
   isLocating = false;
-
   selectedLatLng: { lat: number; lng: number } | null = null;
   map: L.Map | null = null;
   marker: L.Marker | null = null;
+  searchResults: SearchResult[] = [];
+  searchTimeout: any = null;
+  selectedSearchResultAddress: string | null = null;
 
   private _fb = inject(FormBuilder);
+  private platformId = inject(PLATFORM_ID);
   private _authService = inject(AuthService);
   private _router = inject(Router);
 
@@ -67,7 +71,6 @@ export class SchoolBookingComponent implements OnInit, OnDestroy {
     this.apiError = '';
 
     if (this.sub) this.sub.unsubscribe();
-
     this.sub = this._authService.registerDetailsForm(this.registerDetailsForm.value).subscribe({
       next: (res: any) => {
         this.isLoading = false;
@@ -86,9 +89,8 @@ export class SchoolBookingComponent implements OnInit, OnDestroy {
 
     setTimeout(() => {
       if (this.map) this.map.remove();
-
       this.map = L.map('map', {
-        center: [31.2001, 29.9187], // Alexandria
+        center: [31.2001, 29.9187],
         zoom: 13
       });
 
@@ -176,6 +178,45 @@ export class SchoolBookingComponent implements OnInit, OnDestroy {
     );
   }
 
+  searchLocationLive(event: Event) {
+    if (!isPlatformBrowser(this.platformId)) return;
+
+    const query = (event.target as HTMLInputElement).value;
+    this.searchResults = [];
+    if (this.searchTimeout) clearTimeout(this.searchTimeout);
+
+    if (query.length < 3) return;
+
+    this.searchTimeout = setTimeout(() => {
+      const url = `https://nominatim.openstreetmap.org/search?q=${query}&format=json&countrycodes=eg&limit=10`;
+      fetch(url)
+        .then(res => res.json())
+        .then((data: SearchResult[]) => {
+          this.searchResults = data;
+        })
+        .catch(error => {
+          console.error('Search failed:', error);
+          this.searchResults = [];
+        });
+    }, 100);
+  }
+
+  selectSuggestion(result: SearchResult) {
+    if (!isPlatformBrowser(this.platformId)) return;
+
+    this.searchResults = [];
+    const lat = result.lat;
+    const lng = result.lon;
+    this.selectedLatLng = { lat, lng };
+    this.selectedSearchResultAddress = result.display_name;
+
+    if (this.map) {
+      this.map.setView([lat, lng], 15);
+      if (this.marker) this.marker.remove();
+      this.marker = L.marker([lat, lng]).addTo(this.map);
+    }
+  }
+
   closeModal() {
     this.showSuccessModal = false;
     this._router.navigate(['/home']);
@@ -185,4 +226,5 @@ export class SchoolBookingComponent implements OnInit, OnDestroy {
     if (this.sub) this.sub.unsubscribe();
     if (this.map) this.map.remove();
   }
+
 }

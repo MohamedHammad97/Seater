@@ -8,3 +8,4 @@
 @import "swiper/css/pagination";
 
 @import "leaflet/dist/leaflet.css";
+@import 'leaflet-geosearch/dist/geosearch.css';

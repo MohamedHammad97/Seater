@@ -8,11 +8,21 @@
     "/Seater/auth/login": {},
     "/Seater/business": {},
     "/Seater/contact": {},
+    "/Seater/dashboard": {},
+    "/Seater/dashboard/analytics": {},
+    "/Seater/dashboard/clients": {},
+    "/Seater/dashboard/dashboard": {},
+    "/Seater/dashboard/drivers": {},
+    "/Seater/dashboard/notifications": {},
+    "/Seater/dashboard/settings": {},
+    "/Seater/dashboard/trips": {},
+    "/Seater/dashboard/vehicles": {},
     "/Seater/home": {},
     "/Seater/schoolBooking": {},
     "/Seater/schools": {},
     "/Seater/services-info": {},
     "/Seater/special-request": {},
+    "/Seater/special-request-booking": {},
     "/Seater/tracking": {}
   }
 }
